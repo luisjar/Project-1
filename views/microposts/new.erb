@@ -29,7 +29,7 @@
 	  <h4>Select the available tags you like for this post</h4>
   
   	<% @tags.each do |tag| %>
-      <input type="checkbox" name="microposts_tags[]" value="<%= tag.id %>"><%= tag.name %><br/>
+    <input type="checkbox" name="microposts_tags[]" value="<%= tag.id %>"><%= tag.name %><br/>
 
   	<% end %>
 	

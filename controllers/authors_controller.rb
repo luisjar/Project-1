@@ -21,6 +21,7 @@ end
  
 # SHOW
 get '/authors/:id' do
+  @microposts = Micropost.all
   @author = Author.find(params[:id])
   erb :'authors/show'
 end

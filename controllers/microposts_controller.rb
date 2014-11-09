@@ -6,8 +6,9 @@ end
 
 # NEW
 get '/microposts/new' do
-  @author = Author.all
-	erb :'/microposts/new'
+  @authors = Author.all
+  @tags = Tag.all
+	erb :'microposts/new'
 end
 
 # SHOW
@@ -17,20 +18,24 @@ get '/microposts/:id' do
 	erb :'microposts/show'
 end
 
+
 # CREATE
 post '/microposts' do
-	micropost = Micropost.new(params[:micropost])
-	if micropost.save
-		redirect("/microposts/#{micropost.id}")
-	else
-		redirect("/microposts/new")
-	end
+	micropost = Micropost.create(params[:micropost])
+	tag = Tag.find(params[:tag_id])
+	tag.microposts << micropost
+	# if micropost.save
+	redirect("/microposts/#{micropost.id}")
+	# else
+	# 	redirect("/microposts/new")
+	 
 end
 
 # EDIT
 get '/microposts/:id/edit' do
 	@micropost = Micropost.find(params[:id])
-  @author = Author.all
+  @authors = Author.all
+  @tags = Tag.all
 	erb :'microposts/edit'
 end
 

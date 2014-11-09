@@ -27,7 +27,7 @@
 	</label><br>
 
 	<label for="tag">Tag<br>
-		<select name="microposts_tags[tag_id]">
+		<select name="tag[id]">
 			<% @tags.each do |tag| %>
 				<option value="<%= tag.id %>"><%= tag.name %></option>
 			<% end %>

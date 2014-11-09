@@ -1,6 +1,6 @@
 #INDEX
 get '/tags' do 
-  @tags = tag.all
+  @tags = Tag.all
   erb :'tags/index'
 end
  
@@ -11,16 +11,16 @@ end
 
 #SHOW
 get '/tags/:id' do 
-  @authors = Author.all
   @tag = Tag.find(params[:id])
-  erb :'tags/show'
+  @microposts = Micropost.all
+    erb :'tags/show'
 end
  
 # CREATE
 post '/tags' do
   tags = Tag.new(params[:tag])
   if tags.save
-    redirect("/tags/#{tag.id}")
+    redirect("/tags/#{tags.id}")
   else
     redirect("/tags/new")
   end
@@ -40,8 +40,8 @@ end
 put '/tags/:id/add_micropost' do
   tag = Tag.find(params[:id])
   micropost = Micropost.find(params[:micropost_id])
-  tag.microposts.push(author)
-  redirect "/tags/#{tag.id}"
+  tag.microposts.push(micropost)
+    redirect "/tags/#{tag.id}"
 end
  
  #REMOVE A MICROPOST FROM A TAG
