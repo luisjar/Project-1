@@ -1,0 +1,22 @@
+<h1><%= @author.name %></h1>
+<p><img src="<%= @author.photo_url %>" width=200 ></p>
+<p>Birthdate: <%= @author.birthdate %><br>Date Joined: <%= @author.date_joined %><br><%= @author.gender %>
+
+<a href="/authors/<%= @author.id %>/edit"><br>Edit</a>
+
+<form action="/authors/<%= @author.id %>" method="POST">
+	<input type="hidden" name="_method" value="DELETE">
+	<button>DELETE</button>
+</form>
+
+
+<% @author.microposts.each do |micropost| %>
+	<div class="single micropost">
+		<h2><%= micropost.title %></h2>
+		<h4>By <%= micropost.author.name %></h4>
+		<img src="<%= micropost.img_url %>" alt="" width=400>
+		<p><%= micropost.content %></p>
+		<a href="/microposts/<%= micropost.id %>">View</a>
+	</div>
+<% end %>
+

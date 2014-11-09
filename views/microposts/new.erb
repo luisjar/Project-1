@@ -1,0 +1,48 @@
+<h3>Add a new micropost</h3>
+<form action="/microposts" method="POST">
+	<label for="title">Title<br>
+		<input type="text" name="micropost[title]">
+	</label><br>
+
+	<label for="author">Author<br>
+		<select name="micropost[author_id]">
+			<% @authors.each do |author| %>
+				<option value="<%= author.id %>"><%= author.name %></option>
+			<% end %>
+		</select>   <a href="/authors/new">Add a new Author?</a></p>
+	</label><p>
+
+	<label for="img_url">Image URL<br>
+		<input type="text" name="micropost[img_url]">
+	</label><br>
+
+	<label for="date_created">Date Created (yyyymmdd)<br>
+		<input type="text" name="micropost[date_created]">
+	</label><br>
+
+	<label for="content">Content<br>
+		<input type="text" name="micropost[content]">
+	</label><br>
+
+
+
+	  <h4>Select the available tags you like for this post</h4>
+  
+  	<% @tags.each do |tag| %>
+      <input type="checkbox" name="microposts_tags[]" value="<%= tag.id %>"><%= tag.name %><br/>
+
+  	<% end %>
+	
+
+<br><input type="submit" name="submit">
+
+</form>
+	
+		<br><form action="/tags" method="POST">
+	<label for="name">Or create a new tag<br>
+		<input type="text" name="tag[name]">
+	</label>	
+	<button>Create</button>
+	</form>
+
+

@@ -1,0 +1,45 @@
+<h3>Edit a Micropost!</h3>
+<form action="/microposts/<%= @micropost.id %>" method="POST">
+	<input type="hidden" name="_method" value="PUT">
+
+	<label for="title">Title<br>
+		<input type="text" name="micropost[title]" value="<%= @micropost.title %>">
+	</label><br>
+
+	<label for="author">Author<br>
+		<select name="micropost[author_id]">
+			<% @authors.each do |author| %>
+				<option <%= "selected" if author == @micropost.author %> value="<%= author.id %>"><%= author.name %></option>			
+			<% end %>
+		</select>   <a href="/authors/new">Add a new Author?</a><br>
+	</label>
+
+	<label for="date_created">Date Created (yyyymmdd)<br>
+		<input type="text" name="micropost[date_created]" value="<%= @micropost.date_created %>">
+	</label><br>
+
+	<label for="img_url">Image URL<br>
+		<input type="text" name="micropost[img_url]" value="<%= @micropost.img_url %>">
+	</label><br>
+
+	<label for="content">Content<br>
+		<input type="text" name="micropost[content]" value="<%= @micropost.content %>">
+	</label><br>
+
+	<label for="tag">Tag<br>
+		<select name="microposts_tags[tag_id]">
+			<% @tags.each do |tag| %>
+				<option value="<%= tag.id %>"><%= tag.name %></option>
+			<% end %>
+		</select>   <a href="/tags/new">Add a new Tag?</a><br>
+	</label><br><br>
+
+
+
+	<input type="submit" name="submit">
+</form><br>
+
+<form action="/microposts/<%= @micropost.id %>" method="POST">
+	<input type="hidden" name="_method" value="DELETE">
+	<button>DELETE</button>
+</form>

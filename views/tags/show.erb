@@ -1,0 +1,32 @@
+<h2>Tag: <%= @tag.name %></h2>
+<div style="width:95%; margin: 0 auto; ">
+<% @tag.microposts.each do |micropost| %>
+    <h4> 
+      <%= micropost.title %> <a href="/microposts/<%= micropost.id %>">(View Post)</a>  
+
+      <span>
+        <form action="/tags/<%= @tag.id %>/remove_micropost" method="post">
+          <input type="hidden" name="_method" value="put">
+          <input type="hidden" name="micropost_id" value="<%= micropost.id %>">
+          <input type="submit" value="Remove this micropost from the tag">
+        </form>
+      </span>
+    </h4>  
+<% end %>
+</div>
+
+<h3>Add an existing micropost to the <i><%= @tag.name %></i> tag</h3> 
+ <form action="/tags/<%= @tag.id %>/add_micropost" method="post">
+  <input type="hidden" name="_method" value="put">
+    <select name="micropost_id">
+      <% @microposts.each do |micropost| %>
+        <option value="<%= micropost.id %>"><%= micropost.title %></option>
+      <% end %>
+    </select>
+    <input type="submit" value="Add">
+  </form>
+
+ <form action="/tags/<%= @tag.id %>" method="POST">
+  <input type="hidden" name="_method" value="DELETE">
+  <br><br><button>DELETE TAG</button>
+</form>

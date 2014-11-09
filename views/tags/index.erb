@@ -1,0 +1,16 @@
+<% @tags.each do |tag| %>
+	
+		<form action="/tags/<%= tag.id %>" method="GET">
+		<input type="submit" value="<%= tag.name %>">
+		
+		</form>
+<% end %><br>
+
+	<form action="/tags" method="POST">
+	<label for="name">Create a new tag<br>
+		<input type="text" name="tag[name]">
+	</label>	
+	<button>Create</button>
+	</form>
+	
+

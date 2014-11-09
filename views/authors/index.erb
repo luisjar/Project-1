@@ -1,0 +1,12 @@
+<p><a href="/authors/new">Add a new Author?</a></p>
+<% @authors.each do |author| %>
+	<div class="author all">
+		<h1><%= author.name %></h1><a href="/authors/<%= author.id %>">View</a><br> 
+		<div>
+			<br><img src="<%= author.photo_url %>" width=200>
+			<p>
+				Birthdate: <%= author.birthdate %><br>Date Joined: <%= author.date_joined %><br><%= author.gender %>
+			</p><br>
+		</div>
+	</div>
+<% end %>
