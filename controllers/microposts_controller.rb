@@ -6,9 +6,9 @@ end
 
 # NEW
 get '/microposts/new' do
-  @authors = Author.all
-  @tags = Tag.all
-	erb :'microposts/new'
+ @authors = Author.all
+ @tags = Tag.all
+ erb :'microposts/new'
 end
 
 # SHOW
@@ -22,12 +22,11 @@ end
 # CREATE
 post '/microposts' do
 	micropost = Micropost.create(params[:micropost])
-	tag = Tag.find(params[:tag_id])
-	tag.microposts << micropost
-	# if micropost.save
+	params[:tag_id].each do |id|
+		micropost.tags << Tag.find(id)
+
+end
 	redirect("/microposts/#{micropost.id}")
-	# else
-	# 	redirect("/microposts/new")
 	 
 end
 
@@ -37,6 +36,7 @@ get '/microposts/:id/edit' do
   @authors = Author.all
   @tags = Tag.all
 	erb :'microposts/edit'
+	
 end
 
 # UPDATE

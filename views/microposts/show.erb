@@ -1,17 +1,21 @@
-<div class="single micropost">
+<div id="content">
+
 	<h2><%= @micropost.title %></h2>
-	<h4>By <a href="/authors/<%= @micropost.author.id %>"><%= @micropost.author.name %></a></h4>
+	<h4>By <a style="color:#33D6FF" href="/authors/<%= @micropost.author.id %>"><%= @micropost.author.name %></a></h4>
 	<img src="<%= @micropost.img_url %>" alt="" width=400>
 	<p>Created on: <%= @micropost.date_created %></p>
 	
 
 <% @micropost.tags.each do |tag| %>
 
-    <form action="/tags/<%= tag.id %>" method="GET">
+    <form style="display: inline;" action="/tags/<%= tag.id %>" method="GET">
 		<input type="submit" value="<%= tag.name %>">
-				</form>  
+		</form> 
+
 <% end %>	  
+
+<br><a class="link" href="/microposts/<%= @micropost.id %>/edit">Edit</a><br>
+
 </div>
-<br><a href="/microposts/<%= @micropost.id %>/edit">Edit Micropost</a>
 
 

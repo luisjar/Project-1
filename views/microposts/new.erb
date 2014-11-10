@@ -1,24 +1,26 @@
+<div id="content">
+
 <h3>Add a new micropost</h3>
 <form action="/microposts" method="POST">
 	<label for="title">Title<br>
 		<input type="text" name="micropost[title]">
-	</label><br>
+	</label><br><br>
 
 	<label for="author">Author<br>
 		<select name="micropost[author_id]">
 			<% @authors.each do |author| %>
 				<option value="<%= author.id %>"><%= author.name %></option>
 			<% end %>
-		</select>   <a href="/authors/new">Add a new Author?</a></p>
+		</select>   <a style="color:#33D6FF" href="/authors/new">&nbsp;Add a new Author</a></p>
 	</label><p>
 
 	<label for="img_url">Image URL<br>
 		<input type="text" name="micropost[img_url]">
-	</label><br>
+	</label><br><br>
 
 	<label for="date_created">Date Created (yyyymmdd)<br>
 		<input type="text" name="micropost[date_created]">
-	</label><br>
+	</label><br><br>
 
 	<label for="content">Content<br>
 		<input type="text" name="micropost[content]">
@@ -29,7 +31,7 @@
 	  <h4>Select the available tags you like for this post</h4>
   
   	<% @tags.each do |tag| %>
-    <input type="checkbox" name="microposts_tags[]" value="<%= tag.id %>"><%= tag.name %><br/>
+    <input type="checkbox" name="tag_id[]" value="<%= tag.id %>"><%= tag.name %><br/>
 
   	<% end %>
 	
@@ -44,5 +46,7 @@
 	</label>	
 	<button>Create</button>
 	</form>
+
+</div>
 
 

@@ -1,10 +1,12 @@
+<div id="content">
+
 <% @tags.each do |tag| %>
 	
-		<form action="/tags/<%= tag.id %>" method="GET">
+		<form style="display: inline;" action="/tags/<%= tag.id %>" method="GET">
 		<input type="submit" value="<%= tag.name %>">
 		
 		</form>
-<% end %><br>
+<% end %><br><br>
 
 	<form action="/tags" method="POST">
 	<label for="name">Create a new tag<br>
@@ -12,5 +14,7 @@
 	</label>	
 	<button>Create</button>
 	</form>
+
+</div>
 	
 

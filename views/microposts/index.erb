@@ -1,4 +1,7 @@
-<p><a href="/microposts/new">Add a new micropost</a></p>
+<div id="content">
+
+<p><a class="link" href="/microposts/new">Add a new micropost</a></p><br>
+
 <% @microposts.each do |micropost| %>
 	<div class="single micropost">
 		<h2><%= micropost.title %></h2>
@@ -6,6 +9,10 @@
 		<img src="<%= micropost.img_url %>" width=400>
 		<p>Created on <%= micropost.date_created %></p>
 		<p><%= micropost.content%></p>
-		<a href="/microposts/<%= micropost.id %>">View micropost</a>
+		<a class="link" href="/microposts/<%= micropost.id %>">View micropost</a><br><br>
+		<hr>
+		<br>
 	</div>
 <% end %>
+
+</div>

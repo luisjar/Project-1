@@ -1,31 +1,36 @@
+<div id="content">
+
 <h3>Edit an Author</h3>
 <form action="/authors/<%= @author.id %>" method="POST">
 	<input type="hidden" name="_method" value="PUT">
 
 	<label for="name">Name<br>
 		<input type="text" name="author[name]" value="<%= @author.name %>">
-	</label><br>
+	</label><br><br>
 
 	<label for="photo_url">Photo URL<br>
 		<input type="text" name="author[photo_url]" value="<%= @author.photo_url %>">
-	</label><br>
+	</label><br><br>
 
 	<label for="birthdate">Birthdate (yyyymmdd)<br>
 		<input type="text" name="author[birthdate]" value="<%= @author.birthdate %>">
-	</label><br>
+	</label><br><br>
 
 	<label for="date_joined">Date joined (yyyymmdd)<br>
 		<input type="text" name="author[date_joined]" value="<%= @author.date_joined %>">
-	</label><br>
+	</label><br><br>
 
 	<label for="gender">Gender<br>
 		<input type="text" name="author[gender]" value="<%= @author.gender %>">
 	</label><br><br>
 
 	<input type="submit" name="submit">
-</form><br>
+</form><br><br>
+
 
 <form action="/authors/<%= @author.id %>" method="POST">
 	<input type="hidden" name="_method" value="DELETE">
 	<button>DELETE AUTHOR</button>
 </form>
+
+</div>
