@@ -19,13 +19,12 @@ get '/microposts/:id' do
 end
 
 
-# CREATE
+#CREATE
 post '/microposts' do
 	micropost = Micropost.create(params[:micropost])
 	params[:tag_id].each do |id|
-		micropost.tags << Tag.find(id)
-
-end
+	micropost.tags << Tag.find(id)
+	end
 	redirect("/microposts/#{micropost.id}")
 	 
 end
