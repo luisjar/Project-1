@@ -29,7 +29,14 @@
 	  <h4>Select the available tags you like for this post</h4>
   
   	<% @tags.each do |tag| %>
-    <input type="checkbox" name="microposts_tags[]" value="<%= tag.id %>"><%= tag.name %><br/>
+
+  	<!-- v2 reworking checkbox portion of html -->
+  	<!-- I think tag_id has to match params[:tag_id] in your microposts controller -->
+  	 <input type="checkbox" name="tag_id[]" value="<%= tag.id %>"><%= tag.name %><br/>
+
+  	 <!-- end v2 work -->
+
+   <!--  <input type="checkbox" name="microposts_tags[]" value="<%= tag.id %>"><%= tag.name %><br/> -->
 
   	<% end %>
 	

@@ -20,11 +20,26 @@ end
 
 
 # CREATE
+# post '/microposts' do
+# 	micropost = Micropost.create(params[:micropost])
+# 	tag = Tag.find(params[:tag_id])
+# 	tag.microposts << micropost
+# 	# if micropost.save
+# 	redirect("/microposts/#{micropost.id}")
+# 	# else
+# 	# 	redirect("/microposts/new")
+	 
+# end
+
+# Create (v2)
+
 post '/microposts' do
 	micropost = Micropost.create(params[:micropost])
-	tag = Tag.find(params[:tag_id])
-	tag.microposts << micropost
-	# if micropost.save
+	# params[:tag_id] is now an array so we have to loop thru it
+	params[:tag_id].each do |id|
+		micropost.tags << Tag.find(id)
+	end
+
 	redirect("/microposts/#{micropost.id}")
 	# else
 	# 	redirect("/microposts/new")
